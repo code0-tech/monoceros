@@ -1,6 +1,15 @@
 {
   "$schema": "https://docs.renovatebot.com/renovate-schema.json",
   "extends": [
-    "config:recommended"
+    "config:recommended",
+    ":assignee(Taucher2003)",
+    ":label(dependencies)"
+  ],
+  "packageRules": [
+    {
+      "matchPackageNames": ["ghcr.io/code0-tech/build-images/asdf"],
+      "automerge": true,
+      "platformAutomerge": false
+    }
   ]
 }
