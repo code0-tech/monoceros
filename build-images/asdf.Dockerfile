@@ -1,5 +1,5 @@
 FROM debian:12.5-slim
-LABEL org.opencontainers.image.source=https://github.com/code0-tech/build-images
+LABEL org.opencontainers.image.source=https://github.com/code0-tech/internal-tooling
 
 RUN apt-get update && apt-get install curl git -y
 RUN git clone https://github.com/asdf-vm/asdf.git ~/.asdf --branch v0.13.1

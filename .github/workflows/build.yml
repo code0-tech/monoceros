@@ -27,17 +27,17 @@ jobs:
         with:
           filters: |
             image:
-              - '${{ matrix.image }}.Dockerfile'
-              - '${{ matrix.image }}/**'
+              - 'build-images/${{ matrix.image }}.Dockerfile'
+              - 'build-images/${{ matrix.image }}/**'
               - '.github/workflows/build.yml'
       - run: >-
           docker build
-          -t ghcr.io/${{ github.repository }}/${{ matrix.image }}:${{ github.run_number }}.${{ github.run_attempt }}
-          -f ${{ matrix.image }}.Dockerfile
+          -t ghcr.io/code0-tech/build-images/${{ matrix.image }}:${{ github.run_number }}.${{ github.run_attempt }}
+          -f build-images/${{ matrix.image }}.Dockerfile
           .
         if: steps.filter.outputs.image == 'true'
       - run: echo ${{ secrets.GITHUB_TOKEN }} | docker login -u $ --password-stdin ghcr.io
         name: Login to registry
         if: ${{ github.event_name == 'push' && steps.filter.outputs.image == 'true' }}
-      - run: docker push ghcr.io/${{ github.repository }}/${{ matrix.image }}:${{ github.run_number }}.${{ github.run_attempt }}
+      - run: docker push ghcr.io/code0-tech/build-images/${{ matrix.image }}:${{ github.run_number }}.${{ github.run_attempt }}
         if: ${{ github.event_name == 'push' && steps.filter.outputs.image == 'true' }}
