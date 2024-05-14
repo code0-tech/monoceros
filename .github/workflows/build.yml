@@ -39,6 +39,6 @@ jobs:
         if: steps.filter.outputs.image == 'true'
       - run: echo ${{ secrets.GITHUB_TOKEN }} | docker login -u $ --password-stdin ghcr.io
         name: Login to registry
-        if: ${{ github.event_name == 'push' && steps.filter.outputs.image == 'true' }}
+        if: ${{ (github.event_name == 'push' && steps.filter.outputs.image == 'true') || github.event_name == 'workflow_dispatch' }}
       - run: docker push ghcr.io/code0-tech/build-images/${{ matrix.image }}:${{ github.run_number }}.${{ github.run_attempt }}
-        if: ${{ github.event_name == 'push' && steps.filter.outputs.image == 'true' }}
+        if: ${{ (github.event_name == 'push' && steps.filter.outputs.image == 'true') || github.event_name == 'workflow_dispatch' }}
