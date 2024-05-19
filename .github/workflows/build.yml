@@ -16,10 +16,15 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        image:
-          - asdf
-          - node-20.13-playwright
-          - ruby-3.2.2-postgres-16.1
+        include:
+          - image: asdf
+            tag_suffix: ''
+          - image: node-playwright
+            tag_suffix: '-node-20.13'
+            args: '--build-arg NODE_VERSION=20.13.1'
+          - image: ruby-postgres
+            tag_suffix: '-ruby-3.2.2-postgres-16.1'
+            args: '--build-arg RUBY_VERSION=3.2.2 --build-arg POSTGRES_VERSION=16.1'
 
     steps:
       - uses: actions/checkout@v4
@@ -33,12 +38,13 @@ jobs:
               - '.github/workflows/build.yml'
       - run: >-
           docker build
-          -t ghcr.io/code0-tech/build-images/${{ matrix.image }}:${{ github.run_number }}.${{ github.run_attempt }}
+          -t ghcr.io/code0-tech/build-images/${{ matrix.image }}:${{ github.run_number }}.${{ github.run_attempt }}${{ matrix.tag_suffix }}
           -f build-images/${{ matrix.image }}.Dockerfile
+          ${{ matrix.args }}
           .
         if: steps.filter.outputs.image == 'true'
       - run: echo ${{ secrets.GITHUB_TOKEN }} | docker login -u $ --password-stdin ghcr.io
         name: Login to registry
         if: ${{ (github.event_name == 'push' && steps.filter.outputs.image == 'true') || github.event_name == 'workflow_dispatch' }}
-      - run: docker push ghcr.io/code0-tech/build-images/${{ matrix.image }}:${{ github.run_number }}.${{ github.run_attempt }}
+      - run: docker push ghcr.io/code0-tech/build-images/${{ matrix.image }}:${{ github.run_number }}.${{ github.run_attempt }}${{ matrix.tag_suffix }}
         if: ${{ (github.event_name == 'push' && steps.filter.outputs.image == 'true') || github.event_name == 'workflow_dispatch' }}

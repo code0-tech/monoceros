@@ -16,5 +16,7 @@ RUN apt-get update && apt-get install \
 RUN asdf plugin add ruby https://github.com/asdf-vm/asdf-ruby.git
 RUN asdf plugin add postgres https://github.com/smashedtoatoms/asdf-postgres.git
 
-RUN asdf install ruby 3.2.2
-RUN POSTGRES_EXTRA_CONFIGURE_OPTIONS="--without-icu" POSTGRES_SKIP_INITDB=true asdf install postgres 16.1
+ARG RUBY_VERSION
+RUN asdf install ruby $RUBY_VERSION
+ARG POSTGRES_VERSION
+RUN POSTGRES_EXTRA_CONFIGURE_OPTIONS="--without-icu" POSTGRES_SKIP_INITDB=true asdf install postgres $POSTGRES_VERSION
