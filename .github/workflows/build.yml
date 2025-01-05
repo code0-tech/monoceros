@@ -20,8 +20,8 @@ jobs:
           - image: asdf
             tag_suffix: ''
           - image: node-playwright
-            tag_suffix: '-node-20.18'
-            args: '--build-arg NODE_VERSION=20.18.0'
+            tag_suffix: '-node-22.12'
+            args: '--build-arg NODE_VERSION=22.12.0'
           - image: ruby-postgres
             tag_suffix: '-ruby-3.2.2-postgres-16.1'
             args: '--build-arg RUBY_VERSION=3.2.2 --build-arg POSTGRES_VERSION=16.1'
