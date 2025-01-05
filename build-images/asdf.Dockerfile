@@ -1,4 +1,4 @@
-FROM debian:12.7-slim
+FROM debian:12.8-slim
 LABEL org.opencontainers.image.source=https://github.com/code0-tech/internal-tooling
 
 RUN apt-get update && apt-get install curl git -y
