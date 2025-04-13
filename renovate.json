@@ -7,7 +7,10 @@
   ],
   "packageRules": [
     {
-      "matchPackageNames": ["ghcr.io/code0-tech/build-images/asdf"],
+      "matchPackageNames": [
+        "ghcr.io/code0-tech/build-images/asdf",
+        "ghcr.io/code0-tech/build-images/mise"
+      ],
       "automerge": true,
       "platformAutomerge": false
     }
