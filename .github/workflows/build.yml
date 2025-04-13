@@ -19,6 +19,8 @@ jobs:
         include:
           - image: asdf
             tag_suffix: ''
+          - image: mise
+            tag_suffix: ''
           - image: node-playwright
             tag_suffix: '-node-22.14'
             args: '--build-arg NODE_VERSION=22.14.0'
