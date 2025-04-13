@@ -1,4 +1,4 @@
-FROM ghcr.io/code0-tech/build-images/asdf:109.1
+FROM ghcr.io/code0-tech/build-images/asdf:119.1
 SHELL ["/usr/bin/bash", "-lc"]
 
 RUN apt-get update && apt-get install \
