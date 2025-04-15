@@ -52,3 +52,13 @@ jobs:
         if: ${{ (github.event_name == 'push' && steps.filter.outputs.image == 'true') || github.event_name == 'workflow_dispatch' }}
       - run: docker push ghcr.io/code0-tech/build-images/${{ matrix.image }}:${{ github.run_number }}.${{ github.run_attempt }}${{ matrix.tag_suffix }}
         if: ${{ (github.event_name == 'push' && steps.filter.outputs.image == 'true') || github.event_name == 'workflow_dispatch' }}
+
+  require-all-images:
+    runs-on: ubuntu-latest
+    needs:
+      - build
+    if: ${{ always() }}
+    steps:
+      - name: Fail if any image build failed
+        if: ${{ needs.build.result != 'success' }}
+        run: exit 1
