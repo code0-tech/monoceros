@@ -1,22 +1,24 @@
 FROM ghcr.io/code0-tech/build-images/mise:131.1
 
-RUN apt-get update && apt-get install \
-    build-essential \
-    libssl-dev \
-    libreadline-dev \
-    zlib1g-dev \
-    libcurl4-openssl-dev \
-    uuid-dev \
-    icu-devtools \
-    libicu-dev \
-    libyaml-dev \
-    -y
+RUN apt-get update \
+    && apt-get install \
+        build-essential \
+        libssl-dev \
+        libreadline-dev \
+        zlib1g-dev \
+        libcurl4-openssl-dev \
+        uuid-dev \
+        libicu-dev \
+        libyaml-dev \
+        flex \
+        bison \
+        -y \
+    && rm -rf /var/lib/apt/lists/* \
+    && apt-get clean
 
 ARG POSTGRES_VERSION
 ARG RUBY_VERSION
-ADD build-images/mise/mise.ruby-postgres.toml ./mise.toml
-RUN mise trust &&  \
-    mise config set tools.postgres.version $POSTGRES_VERSION -t string && \
-    mise config set tools.ruby.version $RUBY_VERSION -t string && \
-    mise install && \
-    rm mise.toml
+RUN echo "POSTGRES_SKIP_INITDB=true" > .install-env \
+    && echo "POSTGRES_EXTRA_CONFIGURE_OPTIONS=--without-icu" >> .install-env \
+    && MISE_ENV_FILE=.install-env mise install postgres@$POSTGRES_VERSION ruby@$RUBY_VERSION \
+    && rm .install-env
