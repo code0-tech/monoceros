@@ -1,22 +1,24 @@
-FROM ghcr.io/code0-tech/build-images/asdf:158.1
-SHELL ["/usr/bin/bash", "-lc"]
+FROM ghcr.io/code0-tech/build-images/mise:131.1
 
-RUN apt-get update && apt-get install \
-    build-essential \
-    libssl-dev \
-    libreadline-dev \
-    zlib1g-dev \
-    libcurl4-openssl-dev \
-    uuid-dev \
-    icu-devtools \
-    libicu-dev \
-    libyaml-dev \
-    -y
+RUN apt-get update \
+    && apt-get install \
+        build-essential \
+        libssl-dev \
+        libreadline-dev \
+        zlib1g-dev \
+        libcurl4-openssl-dev \
+        uuid-dev \
+        libicu-dev \
+        libyaml-dev \
+        flex \
+        bison \
+        -y \
+    && rm -rf /var/lib/apt/lists/* \
+    && apt-get clean
 
-RUN asdf plugin add ruby https://github.com/asdf-vm/asdf-ruby.git
-RUN asdf plugin add postgres https://github.com/smashedtoatoms/asdf-postgres.git
-
-ARG RUBY_VERSION
-RUN asdf install ruby $RUBY_VERSION
 ARG POSTGRES_VERSION
-RUN POSTGRES_EXTRA_CONFIGURE_OPTIONS="--without-icu" POSTGRES_SKIP_INITDB=true asdf install postgres $POSTGRES_VERSION
+ARG RUBY_VERSION
+RUN echo "POSTGRES_SKIP_INITDB=true" > .install-env \
+    && echo "POSTGRES_EXTRA_CONFIGURE_OPTIONS=--without-icu" >> .install-env \
+    && MISE_ENV_FILE=.install-env mise use -g postgres@$POSTGRES_VERSION ruby@$RUBY_VERSION \
+    && rm .install-env
