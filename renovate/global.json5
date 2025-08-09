@@ -4,5 +4,35 @@
     "config:recommended",
     ":label(dependencies)",
     ":semanticCommitsDisabled"
+  ],
+  prBodyColumns: [
+    "Package",
+    "Change",
+    "Age",
+    "Adoption",
+    "Passing",
+    "Confidence",
+    "Diffend"
+  ],
+  prBodyDefinitions: {
+    Diffend: ""
+  },
+  packageRules: [
+    {
+      matchManagers: [
+        "bundler"
+      ],
+      prBodyDefinitions: {
+        Diffend: "https://my.diffend.io/gems/{{depName}}/{{currentVersion}}/{{newVersion}}"
+      }
+    },
+    {
+      matchManagers: [
+        "npm"
+      ],
+      prBodyDefinitions: {
+        Diffend: "https://my.diffend.io/npm/{{depName}}/{{currentVersion}}/{{newVersion}}"
+      }
+    }
   ]
 }
