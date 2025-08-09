@@ -47,7 +47,7 @@
         "bundler"
       ],
       prBodyDefinitions: {
-        Diffend: "https://my.diffend.io/gems/{{depName}}/{{currentVersion}}/{{newVersion}}"
+        Diffend: "[Diff](https://my.diffend.io/gems/{{depName}}/{{currentVersion}}/{{newVersion}})"
       }
     },
     {
@@ -55,7 +55,7 @@
         "npm"
       ],
       prBodyDefinitions: {
-        Diffend: "https://my.diffend.io/npm/{{depName}}/{{currentVersion}}/{{newVersion}}"
+        Diffend: "[Diff](https://my.diffend.io/npm/{{depName}}/{{currentVersion}}/{{newVersion}})"
       }
     }
   ]
