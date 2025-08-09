@@ -10,12 +10,10 @@
   ],
   prBodyColumns: [
     "Package",
+    "Type",
     "Change",
     "Diffend"
   ],
-  prBodyDefinitions: {
-    Diffend: ""
-  },
   packageRules: [
     {
       matchDatasources: [
