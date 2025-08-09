@@ -5,19 +5,43 @@
     ":label(dependencies)",
     ":semanticCommitsDisabled"
   ],
+  ignorePresets: [
+    "mergeConfidence:all-badges"
+  ],
   prBodyColumns: [
     "Package",
     "Change",
-    "Age",
-    "Adoption",
-    "Passing",
-    "Confidence",
     "Diffend"
   ],
   prBodyDefinitions: {
     Diffend: ""
   },
   packageRules: [
+    {
+      matchDatasources: [
+        "go",
+        "maven",
+        "npm",
+        "nuget",
+        "packagist",
+        "pypi",
+        "rubygems",
+      ],
+      matchUpdateTypes: [
+        "patch",
+        "minor",
+        "major"
+      ],
+      prBodyColumns: [
+        "Package",
+        "Change",
+        "Age",
+        "Adoption",
+        "Passing",
+        "Confidence",
+        "Diffend"
+      ]
+    },
     {
       matchManagers: [
         "bundler"
