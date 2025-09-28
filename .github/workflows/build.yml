@@ -22,8 +22,8 @@ jobs:
           - image: mise
             tag_suffix: ''
           - image: node-playwright
-            tag_suffix: '-node-22.16'
-            args: '--build-arg NODE_VERSION=22.16.0'
+            tag_suffix: '-node-24.8'
+            args: '--build-arg NODE_VERSION=24.8.0'
           - image: reticulum-builder
             tag_suffix: '-ruby-3.2.2'
             args: '--build-arg RUBY_VERSION=3.2.2'
