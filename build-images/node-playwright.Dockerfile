@@ -1,8 +1,5 @@
-FROM ghcr.io/code0-tech/build-images/asdf:196.1
-SHELL ["/usr/bin/bash", "-lc"]
-
-RUN asdf plugin add nodejs https://github.com/asdf-vm/asdf-nodejs.git
+FROM ghcr.io/code0-tech/build-images/mise:196.1
 
 ARG NODE_VERSION
-RUN asdf install nodejs $NODE_VERSION
-RUN asdf shell nodejs $NODE_VERSION && npx playwright install-deps && npx playwright install
+RUN mise use -g node@$NODE_VERSION
+RUN npx playwright install-deps && npx playwright install
