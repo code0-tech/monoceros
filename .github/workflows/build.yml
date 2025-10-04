@@ -17,8 +17,9 @@ jobs:
       fail-fast: false
       matrix:
         include:
-          - image: asdf
-            tag_suffix: ''
+          # asdf build-image is deprecated and not getting updated
+          #- image: asdf
+          #  tag_suffix: ''
           - image: mise
             tag_suffix: ''
           - image: node-playwright
