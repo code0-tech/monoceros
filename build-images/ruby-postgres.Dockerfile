@@ -1,4 +1,4 @@
-FROM ghcr.io/code0-tech/build-images/mise:196.1
+FROM ghcr.io/code0-tech/build-images/mise:203.1
 
 RUN apt-get update \
     && apt-get install \
