@@ -1,0 +1,22 @@
+name: Runner Support (arm)
+
+on:
+  workflow_dispatch:
+    inputs:
+      project:
+        description: Project to wait for jobs to finish inside
+        required: true
+
+permissions: {}
+
+jobs:
+  runner:
+    runs-on: ubuntu-24.04-arm
+    steps:
+      - uses: Taucher2003/GitLab-Pipeline-Action@1.13.0
+        with:
+          GL_SERVER_URL: https://gitlab.com
+          GL_PROJECT_ID: '${{ inputs.project }}'
+          GL_RUNNER_TOKEN: ${{ secrets.GL_ARM_RUNNER_TOKEN }}
+          GL_API_TOKEN: ${{ secrets.GL_API_TOKEN }}
+          TASK: runner
