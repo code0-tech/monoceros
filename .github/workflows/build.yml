@@ -12,7 +12,7 @@ permissions:
 
 jobs:
   build:
-    runs-on: ubuntu-latest
+    runs-on: ${{ matrix.runner || 'ubuntu-latest' }}
     strategy:
       fail-fast: false
       matrix:
@@ -26,8 +26,13 @@ jobs:
             tag_suffix: '-node-24.8'
             args: '--build-arg NODE_VERSION=24.8.0'
           - image: reticulum-builder
-            tag_suffix: '-ruby-3.4.7'
+            tag_suffix: '-ruby-3.4.7-amd64'
             args: '--build-arg RUBY_VERSION=3.4.7'
+            runner: ubuntu-latest
+          - image: reticulum-builder
+            tag_suffix: '-ruby-3.4.7-arm64'
+            args: '--build-arg RUBY_VERSION=3.4.7'
+            runner: ubuntu-24.04-arm
           - image: ruby-postgres
             tag_suffix: '-ruby-3.4.7-postgres-16.1'
             args: '--build-arg RUBY_VERSION=3.4.7 --build-arg POSTGRES_VERSION=16.1'
