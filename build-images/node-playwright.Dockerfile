@@ -1,4 +1,4 @@
-FROM ghcr.io/code0-tech/build-images/mise:242.1
+FROM ghcr.io/code0-tech/build-images/mise:250.1
 
 ARG NODE_VERSION
 RUN mise use -g node@$NODE_VERSION
