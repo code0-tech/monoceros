@@ -13,7 +13,7 @@ jobs:
   runner:
     runs-on: ubuntu-24.04-arm
     steps:
-      - uses: Taucher2003/GitLab-Pipeline-Action@1.14.0-rc1
+      - uses: Taucher2003/GitLab-Pipeline-Action@1.14.0
         with:
           GL_SERVER_URL: https://gitlab.com
           GL_PROJECT_ID: '${{ inputs.project }}'
