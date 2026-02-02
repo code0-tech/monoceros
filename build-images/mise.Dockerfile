@@ -1,4 +1,4 @@
-FROM debian:12.12-slim
+FROM debian:13.3-slim
 LABEL org.opencontainers.image.source=https://github.com/code0-tech/internal-tooling
 
 RUN apt-get update && apt-get install curl git -y && rm -rf /var/lib/apt/lists/*
