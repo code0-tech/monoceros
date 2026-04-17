@@ -3,7 +3,8 @@
   extends: [
     "config:recommended",
     ":label(dependencies)",
-    ":semanticCommitsDisabled"
+    ":semanticCommitsDisabled",
+    "customManagers:dockerfileVersions"
   ],
   ignorePresets: [
     "mergeConfidence:all-badges"
