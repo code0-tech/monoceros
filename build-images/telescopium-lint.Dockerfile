@@ -4,6 +4,6 @@ FROM ghcr.io/code0-tech/build-images/mise:298.1
 ARG LYCHEE_VERSION=lychee-v0.23.0
 
 # renovate: datasource=github-releases depName=rvben/rumdl versioning=regex:^v(?<major>\d+)\.(?<minor>\d+)\.(?<patch>\d+)$
-ARG RUMDL_VERSION=v0.1.75
+ARG RUMDL_VERSION=v0.1.78
 
 RUN mise use -g lychee@$LYCHEE_VERSION rumdl@$RUMDL_VERSION
