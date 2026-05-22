@@ -1,4 +1,4 @@
-FROM docker:29.4.1
+FROM docker:29.5.2
 LABEL org.opencontainers.image.source=https://github.com/code0-tech/monoceros
 ARG RUBY_VERSION
 
