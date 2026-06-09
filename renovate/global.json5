@@ -15,7 +15,8 @@
     "Package",
     "Type",
     "Change",
-    "Diffend"
+    "Diffend",
+    "Pending"
   ],
   packageRules: [
     // Enable full merge confidence table columns
@@ -41,7 +42,8 @@
         "Adoption",
         "Passing",
         "Confidence",
-        "Diffend"
+        "Diffend",
+        "Pending"
       ]
     },
 
