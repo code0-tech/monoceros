@@ -99,6 +99,15 @@
         "code0-zero_track"
       ],
       minimumReleaseAge: "0 days"
+    },
+    {
+      matchDatasources: [
+        "github-releases"
+      ],
+      matchPackageNames: [
+        "code0-tech/code0-definition"
+      ],
+      minimumReleaseAge: "0 days"
     }
   ]
 }
