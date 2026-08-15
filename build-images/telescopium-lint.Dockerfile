@@ -1,4 +1,4 @@
-FROM ghcr.io/code0-tech/build-images/mise:510.1
+FROM ghcr.io/code0-tech/build-images/mise:522.1
 
 # renovate: datasource=github-releases depName=lycheeverse/lychee versioning=regex:^lychee-v(?<major>\d+)\.(?<minor>\d+)\.(?<patch>\d+)$
 ARG LYCHEE_VERSION=lychee-v0.24.2
