@@ -81,6 +81,7 @@
       ],
       matchPackageNames: [
         "tucana",
+        "triangulum",
         "telescopium",
         "code0-license",
         "code0-identities",
