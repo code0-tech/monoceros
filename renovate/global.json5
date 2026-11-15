@@ -109,6 +109,15 @@
         "code0-tech/code0-definition"
       ],
       minimumReleaseAge: "0 days"
+    },
+    {
+      matchDatasources: [
+        "docker"
+      ],
+      matchPackageNames: [
+        "ghcr.io/code0-tech/build-images/**"
+      ],
+      maxMajorIncrement: 0
     }
   ]
 }
