@@ -16,8 +16,6 @@ RUN apk add \
     yaml-dev \
     mise \
     libc6-compat \
-    jq \
-    firefox-esr \
-    geckodriver
+    jq
 RUN mise install-into ruby@$RUBY_VERSION /usr/local/share/ruby
 ENV PATH=/usr/local/share/ruby/bin:$PATH
