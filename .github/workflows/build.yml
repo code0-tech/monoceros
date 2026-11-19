@@ -26,16 +26,16 @@ jobs:
             tag_suffix: '-node-24.13'
             args: '--build-arg NODE_VERSION=24.13.0'
           - image: reticulum-builder
-            tag_suffix: '-ruby-3.4.7-amd64'
-            args: '--build-arg RUBY_VERSION=3.4.7'
+            tag_suffix: '-ruby-3.4.13-amd64'
+            args: '--build-arg RUBY_VERSION=3.4.13'
             runner: ubuntu-latest
           - image: reticulum-builder
-            tag_suffix: '-ruby-3.4.7-arm64'
-            args: '--build-arg RUBY_VERSION=3.4.7'
+            tag_suffix: '-ruby-3.4.13-arm64'
+            args: '--build-arg RUBY_VERSION=3.4.13'
             runner: ubuntu-24.04-arm
           - image: ruby-postgres
-            tag_suffix: '-ruby-3.4.7-postgres-18.3'
-            args: '--build-arg RUBY_VERSION=3.4.7 --build-arg POSTGRES_VERSION=18.3'
+            tag_suffix: '-ruby-3.4.13-postgres-18.3'
+            args: '--build-arg RUBY_VERSION=3.4.13 --build-arg POSTGRES_VERSION=18.3'
           - image: telescopium-lint
             tag_suffix: ''
 
@@ -71,7 +71,7 @@ jobs:
       matrix:
         include:
           - image: reticulum-builder
-            tag_suffix: '-ruby-3.4.7'
+            tag_suffix: '-ruby-3.4.13'
     steps:
       - uses: actions/checkout@v7
       - uses: dorny/paths-filter@v4
