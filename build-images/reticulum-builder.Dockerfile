@@ -1,6 +1,7 @@
 FROM docker:29.9.2
 LABEL org.opencontainers.image.source=https://github.com/code0-tech/monoceros
 ARG RUBY_VERSION
+ARG TERRAFORM_VERSION
 
 RUN apk add \
     bash \
@@ -18,4 +19,5 @@ RUN apk add \
     libc6-compat \
     jq
 RUN mise install-into ruby@$RUBY_VERSION /usr/local/share/ruby
-ENV PATH=/usr/local/share/ruby/bin:$PATH
+RUN mise install-into terraform@$TERRAFORM_VERSION /usr/local/share/terraform
+ENV PATH=/usr/local/share/ruby/bin:/usr/local/share/terraform:$PATH
